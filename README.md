@@ -1,6 +1,6 @@
 # obs-trtc
 
-Demo for using OBS WHIP to publish a stream to the TRTC(Tencent Realt-Time Communication) service.
+Demo for using OBS WHIP to publish a stream to the TRTC(Tencent Real-Time Communication) service.
 
 ## Overview
 
@@ -11,12 +11,12 @@ Since WHIP is a standardized protocol, it allows you to utilize HTML5 and variou
 clients for publishing and playing real-time streams. Additionally, you can employ 
 open-source tools to construct a real-time streaming platform.
 
-TRTC(Tencent Realt-Time Communication) cloud services are also available for utilizing 
+TRTC(Tencent Real-Time Communication) cloud services are also available for utilizing 
 a streaming platform with OBS WHIP support, particularly when you prefer not to create 
 your own streaming platform or seek a more stable and dependable platform with dedicated 
 support.
 
-Additionally, TRTC(Tencent Realt-Time Communication) offers a free trial with a 
+Additionally, TRTC(Tencent Real-Time Communication) offers a free trial with a 
 certain number of streaming minutes, making it very easy to use.
 
 ## Prerequisites
@@ -24,7 +24,7 @@ certain number of streaming minutes, making it very easy to use.
 Please make sure that you have the following prerequisites before proceeding:
 
 - OBS with WHIP support, please downlaod from [OBS](https://obsproject.com/)
-- TRTC(Tencent Realt-Time Communication) account, please register at [here](https://trtc.tencentcloud.com/)
+- TRTC(Tencent Real-Time Communication) account, please register at [here](https://trtc.tencentcloud.com/)
 
 > Note: Currently, OBS WHIP has been merged into the master branch but has not been released yet. 
 > You can download it from [here](https://github.com/obsproject/obs-studio/actions/runs/5227109208?pr=7926).
