@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TRTC-OBS-WHIP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="javascript:void(0)">TRTC</a>
+            <div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="https://github.com/Tencent-RTC/obs-trtc" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    Settings
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <div class="mb-3">
+                        <label for="txtSDKAppID" class="form-label">SDKAppID</label>
+                        <span class="form-control" id="txtSDKAppID">{{.SDKAppID}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtSDKSecretKey" class="form-label">SDKSecretKey</label>
+                        <span class="form-control" id="txtSDKSecretKey">{{.SDKSecretKey}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtStreamID" class="form-label">StreamID</label>
+                        <span class="form-control" id="txtStreamID">{{.StreamID}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    OBS WHIP
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div class="mb-3">
+                        <label for="txtService" class="form-label">Service</label>
+                        <span class="form-control" id="txtService">WHIP</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtWHIPServer" class="form-label">Server</label>
+                        <input type="text" class="form-control" id="txtWHIPServer" value="{{.WHIPServer}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtWHIPBearerToken" class="form-label">Bearer Token</label>
+                        <input type="text" class="form-control" id="txtWHIPBearerToken" value="{{.WHIPBearerToken}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item" hidden>
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                    FFmpeg WHIP
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <pre>
+ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=440 -pix_fmt yuv420p \
+    -vcodec libx264 -profile:v baseline -r 25 -g 50 -tune zerolatency -threads 1 -bf 0 -acodec libopus -ar 48000 -ac 2 \
+    -f rtc -authorization "{{.WHIPBearerToken}}" \
+    "https://signaling.rtc.tencentcloud.com/v2/pub/{{.SDKAppID}}/{{.StreamID}}?SessionID={{.WHIPSessionID}}"</pre>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                    WHEP Player
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div class="mb-3">
+                        <label for="txtWHEPServer" class="form-label">Server</label>
+                        <input type="text" class="form-control" id="txtWHEPServer" value="{{.WHEPServer}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtWHEPBearerToken" class="form-label">Bearer Token</label>
+                        <input type="text" class="form-control" id="txtWHEPBearerToken" value="{{.WHEPBearerToken}}">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" id="btnPlay">Play Stream</button>
+                    </div>
+                    <div class="mb-3">
+                        <video id="whepPlayer" controls="controls" autoplay />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                    TRTC Room
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="txtSDKAppID2" class="form-label">SDKAppID</label>
+                            <input type="text" class="form-control" id="txtSDKAppID2" value="{{.SDKAppID}}">
+                        </div>
+                        <div class="col mb-3">
+                            <label for="txtRoomID" class="form-label">Room</label>
+                            <input type="text" class="form-control" id="txtRoomID" value="{{.StreamID}}">
+                        </div>
+                        <div class="col mb-3">
+                            <label for="txtUserID" class="form-label">UserID</label>
+                            <input type="text" class="form-control" id="txtUserID" value="{{.TRTCUserID}}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtUserSig" class="form-label">UserSig</label>
+                        <input type="text" class="form-control" id="txtUserSig" value="{{.TRTCUserSig}}">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" id="btnJoin">Join Room</button>
+                    </div>
+                    <div class="mb-3">
+                        <div id="trtcPlayer" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    console.log(`?appid=xxx Overwrite the TRTC_APPID environment variable.`);
+    console.log(`?secret=xxx Overwrite the TRTC_SECRETKEY environment variable.`);
+    console.log(`?stream=xxx Setup the stream ID for WHIP, or room ID for TRTC.`);
+</script>
+
+<script src='https://web.sdk.qcloud.com/trtc/webrtc/v5/npm-package/trtc.js'></script>
+<script type="text/javascript">
+    $(function(){
+        const trtc = TRTC.create();
+        trtc.on(TRTC.EVENT.REMOTE_VIDEO_AVAILABLE, ({ userId, streamType }) => {
+            console.log(`[WHIP] Remote video available: userId=${userId} streamType=${streamType}`);
+            trtc.startRemoteVideo({ userId, streamType, view: 'trtcPlayer' });
+        });
+        const joinRoom = async function() {
+            $('#trtcPlayer').show();
+
+            const sdkAppId = parseInt($("#txtSDKAppID2").val());
+            const roomId = $("#txtRoomID").val();
+            const userId = $("#txtUserID").val();
+            const userSig = $("#txtUserSig").val();
+
+            await trtc.exitRoom();
+            await trtc.enterRoom({ roomId, sdkAppId, userId, userSig });
+        };
+
+        $('#trtcPlayer').hide();
+        $("#btnJoin").click(joinRoom);
+    });
+</script>
+
+<script type="text/javascript">
+$(function(){
+    var whep = null;
+    const startPlay = async function() {
+        $('#whepPlayer').show();
+
+        if (whep) {
+            whep.close();
+        }
+        whep = new SrsRtcWhipWhepAsync();
+        whep.bearer = $("#txtWHEPBearerToken").val();
+        $('#whepPlayer').prop('srcObject', whep.stream);
+
+        // For example: webrtc://r.ossrs.net/live/livestream
+        var url = $("#txtWHEPServer").val();
+        const session = await whep.play(url);
+        console.log('Play success', session);
+    };
+
+    $('#whepPlayer').hide();
+    $("#btnPlay").click(startPlay);
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/webrtc-adapter@8.2.2/out/adapter.min.js"></script>
+<script type="text/javascript">
+  // Depends on adapter-7.4.0.min.js from https://github.com/webrtc/adapter
+  // Async-awat-prmise based SRS RTC Publisher by WHIP.
+  function SrsRtcWhipWhepAsync() {
+    var self = {
+      bearer: null, // The Bearer Token for WHIP.
+    };
+
+    // See https://datatracker.ietf.org/doc/draft-ietf-wish-whip/
+    // @url The WebRTC url to play with, for example:
+    //      http://localhost:1985/rtc/v1/whip-play/?app=live&stream=livestream
+    self.play = async function(url) {
+      self.pc.addTransceiver("audio", {direction: "recvonly"});
+      self.pc.addTransceiver("video", {direction: "recvonly"});
+
+      var offer = await self.pc.createOffer();
+      await self.pc.setLocalDescription(offer);
+      const answer = await new Promise(function(resolve, reject) {
+        console.log("Generated offer: ", offer);
+
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          if (xhr.readyState !== xhr.DONE) return;
+          if (xhr.status !== 200 && xhr.status !== 201) return reject(xhr);
+          const data = xhr.responseText;
+          console.log("Got answer: ", data);
+          return data.code ? reject(xhr) : resolve(data);
+        }
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-type', 'application/sdp');
+        self.bearer && xhr.setRequestHeader('Authorization', `Bearer ${self.bearer}`);
+        xhr.send(offer.sdp);
+      });
+      await self.pc.setRemoteDescription(
+        new RTCSessionDescription({type: 'answer', sdp: answer})
+      );
+
+      return self.__internal.parseId(url, offer.sdp, answer);
+    };
+
+    // Close the publisher.
+    self.close = function () {
+      self.pc && self.pc.close();
+      self.pc = null;
+    };
+
+    // The callback when got local stream.
+    // @see https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addStream#Migrating_to_addTrack
+    self.ontrack = function (event) {
+      // Add track to stream of SDK.
+      self.stream.addTrack(event.track);
+    };
+
+    self.pc = new RTCPeerConnection(null);
+
+    // To keep api consistent between player and publisher.
+    // @see https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addStream#Migrating_to_addTrack
+    // @see https://webrtc.org/getting-started/media-devices
+    self.stream = new MediaStream();
+
+    // Internal APIs.
+    self.__internal = {
+      parseId: (url, offer, answer) => {
+        return {url, offer, answer};
+      },
+    };
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/ontrack
+    self.pc.ontrack = function(event) {
+      if (self.ontrack) {
+        self.ontrack(event);
+      }
+    };
+
+    return self;
+  }
+</script>
+</body>
+</html>
