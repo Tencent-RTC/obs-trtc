@@ -23,6 +23,9 @@ support.
 Additionally, TRTC(Tencent Real-Time Communication) offers a free trial with a 
 certain number of streaming minutes, making it very easy to use.
 
+If you require assistance or encounter any difficulties, please feel free to reach out 
+to us via [Discord](https://discord.gg/vDHty6ddrZ).
+
 ## Prerequisites
 
 Please make sure that you have the following prerequisites before proceeding:
@@ -114,6 +117,9 @@ them to play the stream.
 We explored the use of elastic cloud services for a more stable streaming platform and the 
 steps to set up a TRTC application with OBS WHIP support. These technologies enable efficient 
 containerization and seamless real-time streaming experiences for various use cases.
+
+If you require assistance or encounter any difficulties, please feel free to reach out
+to us via [Discord](https://discord.gg/vDHty6ddrZ).
 
 In the future, we will further investigate specific use cases and technologies associated
 with OBS WHIP and TRTC integration.
