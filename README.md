@@ -1,6 +1,6 @@
 # obs-trtc
 
-Demo for using OBS WHIP to publish a stream to the TRTC service.
+Demo for using OBS WHIP to publish a stream to the TRTC(Tencent Realt-Time Communication) service.
 
 ## Overview
 
@@ -25,6 +25,9 @@ Please make sure that you have the following prerequisites before proceeding:
 
 - OBS with WHIP support, please downlaod from [OBS](https://obsproject.com/)
 - TRTC(Tencent Realt-Time Communication) account, please register at [here](https://trtc.tencentcloud.com/)
+
+> Note: Currently, OBS WHIP has been merged into the master branch but has not been released yet. 
+> You can download it from [here](https://github.com/obsproject/obs-studio/actions/runs/5227109208?pr=7926).
 
 Next, you need to create a TRTC application and generate a bearer token for WHIP.
 
