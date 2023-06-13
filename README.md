@@ -102,13 +102,14 @@ At this point, the stream is being broadcasted to the TRTC service.
 
 ## Step 4: Play the stream
 
-Open the previous webpage which generated the WHIP bearer token, and click **Play Stream** 
-to play the stream via WHEP.
+Open the previous webpage which generated the WHIP Bearer Token, go to the `WHEP Player` section, 
+and click **Play Stream** to play the stream via WHEP.
 
 ![006](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/2e727bce-6d2b-47c8-b214-6fc320b1291a)
 
-Another option is to click **Join Room** to access the TRTC room and watch the stream via 
-TRTC, or you can utilize the TRTC mobile SDK to join the room and view the stream.
+Another option is go to the `TRTC Room` section, and click **Join Room** to access the TRTC room 
+and watch the stream via TRTC, or you can utilize the TRTC mobile SDK to join the room and view 
+the stream.
 
 ![007](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/0a18bd36-e1f3-4070-bc89-95218785cb95)
 
