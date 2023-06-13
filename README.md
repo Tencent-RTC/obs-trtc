@@ -1,4 +1,8 @@
-# obs-trtc
+# OBS-TRTC
+
+[![](https://img.shields.io/twitter/follow/TencentRTC?style=social)](https://twitter.com/TencentRTC)
+[![](https://img.shields.io/badge/TencentRTC-YouTube-red)](https://www.youtube.com/@TencentRTC)
+[![](https://badgen.net/discord/members/vDHty6ddrZ)](https://discord.gg/vDHty6ddrZ)
 
 Demo for using OBS WHIP to publish a stream to the TRTC(Tencent Real-Time Communication) service.
 
