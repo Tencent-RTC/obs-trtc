@@ -11,19 +11,20 @@ Since WHIP is a standardized protocol, it allows you to utilize HTML5 and variou
 clients for publishing and playing real-time streams. Additionally, you can employ 
 open-source tools to construct a real-time streaming platform.
 
-Elastic cloud services are also available for utilizing a streaming platform with 
-OBS WHIP support, particularly when you prefer not to create your own streaming 
-platform or seek a more stable and dependable platform with dedicated support.
+TRTC(Tencent Realt-Time Communication) cloud services are also available for utilizing 
+a streaming platform with OBS WHIP support, particularly when you prefer not to create 
+your own streaming platform or seek a more stable and dependable platform with dedicated 
+support.
 
-Additionally, Tencent Cloud TRTC offers a free trial with a certain number of 
-streaming minutes, making it very easy to use.
+Additionally, TRTC(Tencent Realt-Time Communication) offers a free trial with a 
+certain number of streaming minutes, making it very easy to use.
 
 ## Prerequisites
 
 Please make sure that you have the following prerequisites before proceeding:
 
 - OBS with WHIP support, please downlaod from [OBS](https://obsproject.com/)
-- Tencent Cloud account, please register at [Tencent Cloud](https://intl.cloud.tencent.com/)
+- TRTC(Tencent Realt-Time Communication) account, please register at [here](https://trtc.tencentcloud.com/)
 
 Next, you need to create a TRTC application and generate a bearer token for WHIP.
 
