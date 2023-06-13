@@ -60,8 +60,8 @@ utilized in OBS.
 ## Step 2: Create a Bearer Token for WHIP
 
 You can directly visit https://trtc.ossrs.io/obs-trtc/?appid=2000xxxx&secret=yyyyyy
-to create a WHIP bearer token. Ensure that you replace the SDKAppID and 
-SDKSecretKey with your own credentials.
+to create a WHIP bearer token. Ensure that you replace the appid with your own `SDKAppID` and 
+secret with your own `SDKSecretKey`.
 
 The configuration settings for OBS WHIP are as follows:
 
