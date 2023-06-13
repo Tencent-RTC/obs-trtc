@@ -44,8 +44,9 @@ Please follow the steps below to create a TRTC application:
 
 1. Log in to the [TRTC console](https://console.cloud.tencent.com/trtc) and click **Application Management** on the left sidebar.
 2. Click **Create Application** and enter the application name.
-![001](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/dce31494-ac4f-4844-b437-de3d244af678)
 3. Click **Create** to create the application.
+
+![001](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/dce31494-ac4f-4844-b437-de3d244af678)
 
 After the application is created, you can view the SDKAppID and SDKSecretKey on the application details page.
 
@@ -63,13 +64,15 @@ You can directly visit https://trtc.ossrs.io/obs-trtc/?appid=2000xxxx&secret=yyy
 to create a WHIP bearer token. Ensure that you replace the appid with your own `SDKAppID` and 
 secret with your own `SDKSecretKey`.
 
+In the `OBS WHIP` section, you will find the generated WHIP bearer token for configuring OBS.
+
+![004](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/29f1ac74-cb3a-4c6e-a3e4-e6c92ea2aab0)
+
 The configuration settings for OBS WHIP are as follows:
 
 * Service: `WHIP`
 * Server: `https://signaling.rtc.tencentcloud.com/v2/pub/2000xxxx/xxxxxxx?SessionID=xxxxxxxxx`
 * Bearer Token: `xxxxxx-yyyyyy-zzzzzz`
-
-![004](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/29f1ac74-cb3a-4c6e-a3e4-e6c92ea2aab0)
 
 Alternatively, you can operate your own server to produce the token by utilizing 
 the following command line:
