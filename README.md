@@ -33,19 +33,22 @@ Please follow the steps below to create a TRTC application:
 
 1. Log in to the [TRTC console](https://console.cloud.tencent.com/trtc) and click **Application Management** on the left sidebar.
 2. Click **Create Application** and enter the application name.
+![001](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/dce31494-ac4f-4844-b437-de3d244af678)
 3. Click **Create** to create the application.
 
 After the application is created, you can view the SDKAppID and SDKSecretKey on the application details page.
 
 * SDKAppID: `2000xxxx`
-* SDKSecretKey: `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+* SDKSecretKey: `yyyyyy`
+
+![003](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/f54ad443-645a-4089-8dc7-5a34af48a335)
 
 Following that, you must generate a bearer token for WHIP, which will be 
 utilized in OBS.
 
 ## Step 2: Create a Bearer Token for WHIP
 
-You can directly visit https://trtc.ossrs.io/obs-trtc/?appid=2000xxxx&secret=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+You can directly visit https://trtc.ossrs.io/obs-trtc/?appid=2000xxxx&secret=yyyyyy
 to create a WHIP bearer token. Ensure that you replace the SDKAppID and 
 SDKSecretKey with your own credentials.
 
@@ -55,13 +58,15 @@ The configuration settings for OBS WHIP are as follows:
 * Server: `https://signaling.rtc.tencentcloud.com/v2/pub/2000xxxx/xxxxxxx?SessionID=xxxxxxxxx`
 * Bearer Token: `xxxxxx-yyyyyy-zzzzzz`
 
+![004](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/29f1ac74-cb3a-4c6e-a3e4-e6c92ea2aab0)
+
 Alternatively, you can operate your own server to produce the token by utilizing 
 the following command line:
 
 ```bash
 git clone https://github.com/Tencent-RTC/obs-trtc.git
 cd obs-trtc
-TRTC_APPID=2000xxxx TRTC_SECRETKEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx go run .
+TRTC_APPID=2000xxxx TRTC_SECRETKEY=yyyyyy go run .
 ```
 
 Next, navigate to the webpage http://localhost:9000/ to generate a WHIP bearer token.
@@ -77,6 +82,8 @@ Please follow the steps below to configure OBS:
 5. Click **OK** to save the settings.
 6. Click **Start Streaming** to start streaming.
 
+![005](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/612ad0f9-9927-4b48-82da-8ac388dece80)
+
 At this point, the stream is being broadcasted to the TRTC service.
 
 ## Step 4: Play the stream
@@ -84,8 +91,12 @@ At this point, the stream is being broadcasted to the TRTC service.
 Open the previous webpage which generated the WHIP bearer token, and click **Play Stream** 
 to play the stream via WHEP.
 
+![006](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/2e727bce-6d2b-47c8-b214-6fc320b1291a)
+
 Another option is to click **Join Room** to access the TRTC room and watch the stream via 
 TRTC, or you can utilize the TRTC mobile SDK to join the room and view the stream.
+
+![007](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/0a18bd36-e1f3-4070-bc89-95218785cb95)
 
 Since both WHIP and WHEP are standard protocols, you can utilize any client that supports 
 them to play the stream.
