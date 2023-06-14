@@ -59,13 +59,13 @@ utilized in OBS.
 
 ## Step 2: Create a Bearer Token for WHIP
 
-You can directly visit https://tencent-rtc.github.io/obs-trtc/ to create a WHIP Bearer Token. 
+You can directly visit https://tencent-rtc.github.io/obs-trtc/bearer.html to create a WHIP Bearer Token. 
 Ensure that use the appid with your own `SDKAppID` and secret with your own `SDKSecretKey`, 
 then click the `Generate Bearer Token` button.
 
 ![0031](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/a6df5559-570e-4348-8492-60ffd7aaa2de)
 
-> Note: You can also access the url `https://tencent-rtc.github.io/obs-trtc/?appid=2000xxx&secret=yyyyyy` to setup the parameters.
+> Note: You can also access the url `https://tencent-rtc.github.io/obs-trtc/bearer.html?appid=2000xxx&secret=yyyyyy` to setup the parameters.
 
 Next, use the generated WHIP Bearer Token to configure OBS.
 
@@ -118,7 +118,8 @@ with OBS WHIP and TRTC integration.
 
 ## (Optional) Annex A: Deploy the WHIP Bearer Token Server
 
-We deploy this tool on the server `https://tencent-rtc.github.io/obs-trtc/` for your convenience.
+We deploy this tool on the server `https://tencent-rtc.github.io/obs-trtc/bearer.html` 
+for your convenience.
 
 Alternatively, you can operate your own server to produce the token by utilizing
 the following command line to generate a WHIP Bearer Token.
