@@ -29,7 +29,7 @@ If you need help or run into any problems, don't hesitate to contact us on
 
 Before you move forward, double-check that you've got these necessary items ready:
 
-- OBS with WHIP support, please downlaod from [OBS](https://obsproject.com/)
+- OBS with WHIP support, please download from [OBS](https://obsproject.com/)
 - TRTC(Tencent Real-Time Communication) account, please register at [here](https://www.tencentcloud.com/account/login?s_url=https%3A%2F%2Fconsole.tencentcloud.com%2Ftrtc&from_portal=click_trtc_home&ext1=Get_Started_for_Free)
 
 > Note: Currently, OBS WHIP has been merged into the master branch but has not been released yet. 
@@ -130,8 +130,7 @@ to generate a WHIP Bearer Token.
 
 ```bash
 git clone https://github.com/Tencent-RTC/obs-trtc.git
-cd obs-trtc
-TRTC_APPID=2000xxxx TRTC_SECRETKEY=yyyyyy go run .
+open index.html
 ```
 
 The other steps are the same as the previous section.

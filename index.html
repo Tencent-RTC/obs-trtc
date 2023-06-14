@@ -38,7 +38,7 @@
                     Settings
                 </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse {{if not .Ready}}show{{end}}">
+            <div id="collapseOne" class="accordion-collapse collapse">
                 <div class="accordion-body">
                     <div class="mb-3">
                         <div class="row g-3 align-items-center">
@@ -46,7 +46,7 @@
                                 <label for="txtSDKAppID" class="form-label">SDKAppID</label>
                             </div>
                             <div class="col-auto">
-                                <input type="text" class="form-control" id="txtSDKAppID" value="{{.SDKAppID}}">
+                                <input type="text" class="form-control" id="txtSDKAppID">
                             </div>
                             <div class="col-auto">
                                 *
@@ -62,7 +62,7 @@
                                 <label for="txtSDKSecretKey" class="form-label">SDKSecretKey</label>
                             </div>
                             <div class="col-auto">
-                                <input type="text" class="form-control" id="txtSDKSecretKey" value="{{.SDKSecretKey}}">
+                                <input type="text" class="form-control" id="txtSDKSecretKey">
                             </div>
                             <div class="col-auto">
                                 *
@@ -78,11 +78,11 @@
                                 <label for="txtStreamID" class="form-label">StreamID</label>
                             </div>
                             <div class="col-auto">
-                                <span class="form-control" id="txtStreamID">{{.StreamID}}</span>
+                                <input type="text" class="form-control" id="txtStreamID"></input>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3" {{if .Ready}}hidden{{end}}>
+                    <div id="generateBearerToken" class="mb-3">
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <button class="btn btn-primary" id="btnGenerate">Generate Bearer Token</button>
@@ -97,7 +97,7 @@
                 </div>
             </div>
         </div>
-        <div class="accordion-item" {{if not .Ready}}hidden{{end}}>
+        <div class="accordion-item" id="accordionOne">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
                     OBS WHIP
@@ -111,11 +111,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="txtWHIPServer" class="form-label">Server</label>
-                        <input type="text" class="form-control" id="txtWHIPServer" value="{{.WHIPServer}}">
+                        <input type="text" class="form-control" id="txtWHIPServer">
                     </div>
                     <div class="mb-3">
                         <label for="txtWHIPBearerToken" class="form-label">Bearer Token</label>
-                        <input type="text" class="form-control" id="txtWHIPBearerToken" value="{{.WHIPBearerToken}}">
+                        <input type="text" class="form-control" id="txtWHIPBearerToken">
                     </div>
                     <div class="mb-3">
                         * <a href="https://github.com/Tencent-RTC/obs-trtc#step-3-configure-obs" target="_blank" class="link-opacity-50-hover">
@@ -125,23 +125,7 @@
                 </div>
             </div>
         </div>
-        <div class="accordion-item" hidden>
-            <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                    FFmpeg WHIP
-                </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse show">
-                <div class="accordion-body">
-                    <pre>
-ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=440 -pix_fmt yuv420p \
-    -vcodec libx264 -profile:v baseline -r 25 -g 50 -tune zerolatency -threads 1 -bf 0 -acodec libopus -ar 48000 -ac 2 \
-    -f rtc -authorization "{{.WHIPBearerToken}}" \
-    "https://signaling.rtc.tencentcloud.com/v2/pub/{{.SDKAppID}}/{{.StreamID}}?SessionID={{.WHIPSessionID}}"</pre>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item" {{if not .Ready}}hidden{{end}}>
+        <div class="accordion-item" id="accordionTwo">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
                     WHEP Player
@@ -151,11 +135,11 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
                 <div class="accordion-body">
                     <div class="mb-3">
                         <label for="txtWHEPServer" class="form-label">Server</label>
-                        <input type="text" class="form-control" id="txtWHEPServer" value="{{.WHEPServer}}">
+                        <input type="text" class="form-control" id="txtWHEPServer">
                     </div>
                     <div class="mb-3">
                         <label for="txtWHEPBearerToken" class="form-label">Bearer Token</label>
-                        <input type="text" class="form-control" id="txtWHEPBearerToken" value="{{.WHEPBearerToken}}">
+                        <input type="text" class="form-control" id="txtWHEPBearerToken">
                     </div>
                     <div class="mb-3">
                         <div class="row align-items-center">
@@ -175,7 +159,7 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
                 </div>
             </div>
         </div>
-        <div class="accordion-item" {{if not .Ready}}hidden{{end}}>
+        <div class="accordion-item" id="accordionThree">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
                     TRTC Room
@@ -186,20 +170,20 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
                     <div class="row">
                         <div class="col mb-3">
                             <label for="txtSDKAppID2" class="form-label">SDKAppID</label>
-                            <input type="text" class="form-control" id="txtSDKAppID2" value="{{.SDKAppID}}">
+                            <input type="text" class="form-control" id="txtSDKAppID2">
                         </div>
                         <div class="col mb-3">
                             <label for="txtRoomID" class="form-label">Room</label>
-                            <input type="text" class="form-control" id="txtRoomID" value="{{.StreamID}}">
+                            <input type="text" class="form-control" id="txtRoomID">
                         </div>
                         <div class="col mb-3">
                             <label for="txtUserID" class="form-label">UserID</label>
-                            <input type="text" class="form-control" id="txtUserID" value="{{.TRTCUserID}}">
+                            <input type="text" class="form-control" id="txtUserID">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="txtUserSig" class="form-label">UserSig</label>
-                        <input type="text" class="form-control" id="txtUserSig" value="{{.TRTCUserSig}}">
+                        <input type="text" class="form-control" id="txtUserSig">
                     </div>
                     <div class="mb-3">
                         <div class="row align-items-center">
@@ -222,17 +206,58 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
     </div>
 </div>
 
+<script src='./lib-generate-test-usersig.min.js'></script>
 <script type="text/javascript">
-    console.log(`?appid=xxx Overwrite the TRTC_APPID environment variable.`);
-    console.log(`?secret=xxx Overwrite the TRTC_SECRETKEY environment variable.`);
-    console.log(`?stream=xxx Setup the stream ID for WHIP, or room ID for TRTC.`);
+    $(function(){
+        console.log(`?appid=xxx Overwrite the TRTC_APPID environment variable.`);
+        console.log(`?secret=xxx Overwrite the TRTC_SECRETKEY environment variable.`);
+        console.log(`?stream=xxx Setup the stream ID for WHIP, or room ID for TRTC.`);
 
-    $("#btnGenerate").click(() => {
         const u = new URL(window.location.href);
-        $("#txtSDKAppID").val() && u.searchParams.set("appid", $("#txtSDKAppID").val());
-        $("#txtSDKSecretKey").val() && u.searchParams.set("secret", $("#txtSDKSecretKey").val());
-        $("#txtStreamID").text() && u.searchParams.set("stream", $("#txtStreamID").text());
-        window.location.href = u.toString();
+        const SDKAppID = u.searchParams.get("appid");
+        const SDKSecretKey = u.searchParams.get("secret");
+        const streamID = u.searchParams.get("stream") || Math.random().toString(16).slice(-7);
+
+        SDKAppID && $("#txtSDKAppID").val(SDKAppID);
+        SDKSecretKey && $("#txtSDKSecretKey").val(SDKSecretKey);
+        $("#txtStreamID").val(streamID);
+
+        $("#btnGenerate").click(() => {
+            $("#txtSDKAppID").val() && u.searchParams.set("appid", $("#txtSDKAppID").val());
+            $("#txtSDKSecretKey").val() && u.searchParams.set("secret", $("#txtSDKSecretKey").val());
+            $("#txtStreamID").val() && u.searchParams.set("stream", $("#txtStreamID").val());
+            window.location.href = u.toString();
+        });
+
+        if (!SDKAppID || !SDKSecretKey) {
+            $('#accordionOne').hide();
+            $('#accordionTwo').hide();
+            $('#accordionThree').hide();
+            $('#collapseOne').addClass('show');
+            $('#generateBearerToken').show();
+            return;
+        }
+
+        $('#generateBearerToken').hide();
+        const expireSeconds = 3600;
+        const whipSessionID = Math.random().toString(16).slice(-9);
+        const whipUserSig = new LibGenerateTestUserSig(parseInt(SDKAppID), SDKSecretKey, expireSeconds).genTestUserSig(whipSessionID);
+        const whipServer = `https://signaling.rtc.tencentcloud.com/v2/pub/${SDKAppID}/${streamID}?SessionID=${whipSessionID}`;
+        $('#txtWHIPServer').val(whipServer);
+        $('#txtWHIPBearerToken').val(whipUserSig);
+
+        const whepSessionID = Math.random().toString(16).slice(-9);
+        const whepUserSig = new LibGenerateTestUserSig(parseInt(SDKAppID), SDKSecretKey, expireSeconds).genTestUserSig(whepSessionID);
+        const whepServer = `https://signaling.rtc.tencentcloud.com/v2/sub/${SDKAppID}/${streamID}?SessionID=${whepSessionID}`;
+        $('#txtWHEPServer').val(whepServer);
+        $('#txtWHEPBearerToken').val(whepUserSig);
+
+        const trtcUserID = Math.random().toString(16).slice(-9);
+        const trtcUserSig = new LibGenerateTestUserSig(parseInt(SDKAppID), SDKSecretKey, expireSeconds).genTestUserSig(trtcUserID);
+        $('#txtSDKAppID2').val(SDKAppID);
+        $('#txtRoomID').val(streamID);
+        $('#txtUserID').val(trtcUserID);
+        $('#txtUserSig').val(trtcUserSig);
     });
 </script>
 
