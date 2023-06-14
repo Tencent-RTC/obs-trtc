@@ -49,10 +49,10 @@ Please follow the steps below to create a TRTC application:
 
 After the application is created, you can view the SDKAppID and SDKSecretKey on the application details page.
 
+![003](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/f54ad443-645a-4089-8dc7-5a34af48a335)
+
 * SDKAppID: `2000xxxx`
 * SDKSecretKey: `yyyyyy`
-
-![003](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/f54ad443-645a-4089-8dc7-5a34af48a335)
 
 Following that, you must generate a Bearer Token for WHIP, which will be 
 utilized in OBS.
@@ -71,21 +71,9 @@ In the `OBS WHIP` section, you will find the generated WHIP Bearer Token for con
 
 ![004](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/29f1ac74-cb3a-4c6e-a3e4-e6c92ea2aab0)
 
-The configuration settings for OBS WHIP are as follows:
-
 * Service: `WHIP`
 * Server: `https://signaling.rtc.tencentcloud.com/v2/pub/2000xxxx/xxxxxxx?SessionID=xxxxxxxxx`
 * Bearer Token: `xxxxxx-yyyyyy-zzzzzz`
-
-Alternatively, you can operate your own server to produce the token by utilizing 
-the following command line, then navigate to the webpage `http://localhost:9000/` 
-to generate a WHIP Bearer Token.:
-
-```bash
-git clone https://github.com/Tencent-RTC/obs-trtc.git
-cd obs-trtc
-TRTC_APPID=2000xxxx TRTC_SECRETKEY=yyyyyy go run .
-```
 
 Next, use the generated WHIP Bearer Token to configure OBS.
 
@@ -106,7 +94,7 @@ At this point, the stream is streaming to the TRTC service.
 
 ## Step 4: Play the stream
 
-Open the previous webpage which generated the WHIP Bearer Token, go to the `WHEP Player` section, 
+Open the previous webpage at `trtc.ossrs.io` which generated the WHIP Bearer Token, go to the `WHEP Player` section, 
 and click **Play Stream** to play the stream via WHEP.
 
 ![006](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/2e727bce-6d2b-47c8-b214-6fc320b1291a)
@@ -131,4 +119,20 @@ to us via [Discord](https://discord.gg/vDHty6ddrZ).
 
 In the future, we will further investigate specific use cases and technologies associated
 with OBS WHIP and TRTC integration.
+
+## (Optional) Annexb A: Deploy the WHIP Bearer Token Server
+
+We deploy this tool on the server `https://trtc.ossrs.io/obs-trtc/` for your convenience.
+
+Alternatively, you can operate your own server to produce the token by utilizing
+the following command line, then navigate to the webpage `http://localhost:9000/`
+to generate a WHIP Bearer Token.
+
+```bash
+git clone https://github.com/Tencent-RTC/obs-trtc.git
+cd obs-trtc
+TRTC_APPID=2000xxxx TRTC_SECRETKEY=yyyyyy go run .
+```
+
+The other steps are the same as the previous section.
 

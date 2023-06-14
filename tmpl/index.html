@@ -41,24 +41,46 @@
             <div id="collapseOne" class="accordion-collapse collapse {{if not .Ready}}show{{end}}">
                 <div class="accordion-body">
                     <div class="mb-3">
-                        <label for="txtSDKAppID" class="form-label">SDKAppID</label>
-                        {{if .Ready}}
-                            <span type="text" class="form-control" id="txtSDKAppID">{{.SDKAppID}}</span>
-                        {{else}}
-                            <input type="text" class="form-control" id="txtSDKAppID" value="{{.SDKAppID}}">
-                        {{end}}
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="txtSDKAppID" class="form-label">SDKAppID</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control" id="txtSDKAppID" value="{{.SDKAppID}}">
+                            </div>
+                            <div class="col-auto">
+                                *
+                                <a href="https://github.com/Tencent-RTC/obs-trtc#step-1-create-a-trtc-application" target="_blank" class="link-opacity-50-hover">
+                                    Get a SDKAppID
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="txtSDKSecretKey" class="form-label">SDKSecretKey</label>
-                        {{if .Ready}}
-                            <span type="text" class="form-control" id="txtSDKSecretKey">{{.SDKSecretKey}}</span>
-                        {{else}}
-                            <input type="text" class="form-control" id="txtSDKSecretKey" value="{{.SDKSecretKey}}">
-                        {{end}}
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="txtSDKSecretKey" class="form-label">SDKSecretKey</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control" id="txtSDKSecretKey" value="{{.SDKSecretKey}}">
+                            </div>
+                            <div class="col-auto">
+                                *
+                                <a href="https://github.com/Tencent-RTC/obs-trtc#step-1-create-a-trtc-application" target="_blank" class="link-opacity-50-hover">
+                                    Get a SDKSecretKey
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="txtStreamID" class="form-label">StreamID</label>
-                        <span class="form-control" id="txtStreamID">{{.StreamID}}</span>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="txtStreamID" class="form-label">StreamID</label>
+                            </div>
+                            <div class="col-auto">
+                                <span class="form-control" id="txtStreamID">{{.StreamID}}</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3" {{if .Ready}}hidden{{end}}>
                         <div class="row align-items-center">
@@ -66,10 +88,10 @@
                                 <button class="btn btn-primary" id="btnGenerate">Generate Bearer Token</button>
                             </div>
                             <div class="col-auto">
-                                * <a href="https://github.com/Tencent-RTC/obs-trtc#step-1-create-a-trtc-application" target="_blank" class="link-opacity-50-hover">
-                                Get a SDKAppID and SDKSecretKey
-                            </a>
-                        </div>
+                                * <a href="https://discord.gg/vDHty6ddrZ" target="_blank" class="link-opacity-50-hover">
+                                    Need help and support?
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,7 +153,16 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
                         <input type="text" class="form-control" id="txtWHEPBearerToken" value="{{.WHEPBearerToken}}">
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-primary" id="btnPlay">Play Stream</button>
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <button class="btn btn-primary" id="btnPlay">Play Stream</button>
+                            </div>
+                            <div class="col-auto">
+                                * <a href="https://discord.gg/vDHty6ddrZ" target="_blank" class="link-opacity-50-hover">
+                                    Need help and support?
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <video id="whepPlayer" controls="controls" autoplay />
@@ -166,7 +197,16 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
                         <input type="text" class="form-control" id="txtUserSig" value="{{.TRTCUserSig}}">
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-primary" id="btnJoin">Join Room</button>
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <button class="btn btn-primary" id="btnJoin">Join Room</button>
+                            </div>
+                            <div class="col-auto">
+                                * <a href="https://discord.gg/vDHty6ddrZ" target="_blank" class="link-opacity-50-hover">
+                                    Need help and support?
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <div id="trtcPlayer" />
