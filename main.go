@@ -66,7 +66,7 @@ func doMain(ctx context.Context) error {
 			sSDKAppID := getQueryOrEnv(q, "appid", "TRTC_APPID")
 			ready := sSDKAppID != "" && SDKSecretKey != ""
 			if !ready {
-				return tmpl.Execute(w, &TmplResponse{})
+				return tmpl.Execute(w, &TmplResponse{StreamID: streamID})
 			}
 
 			var SDKAppID int

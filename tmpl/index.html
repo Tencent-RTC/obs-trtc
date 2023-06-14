@@ -56,7 +56,7 @@
                             <input type="text" class="form-control" id="txtSDKSecretKey" value="{{.SDKSecretKey}}">
                         {{end}}
                     </div>
-                    <div class="mb-3" {{if not .Ready}}hidden{{end}}>
+                    <div class="mb-3">
                         <label for="txtStreamID" class="form-label">StreamID</label>
                         <span class="form-control" id="txtStreamID">{{.StreamID}}</span>
                     </div>
@@ -186,6 +186,7 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
         const u = new URL(window.location.href);
         $("#txtSDKAppID").val() && u.searchParams.set("appid", $("#txtSDKAppID").val());
         $("#txtSDKSecretKey").val() && u.searchParams.set("secret", $("#txtSDKSecretKey").val());
+        $("#txtStreamID").text() && u.searchParams.set("stream", $("#txtStreamID").text());
         window.location.href = u.toString();
     });
 </script>
@@ -211,7 +212,11 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
         };
 
         $('#trtcPlayer').hide();
-        $("#btnJoin").click(joinRoom);
+        $("#btnJoin").click(() => {
+            $("#btnJoin").attr("disabled", true);
+            setTimeout(() => $("#btnJoin").attr("disabled", false), 1200);
+            joinRoom();
+        });
     });
 </script>
 
@@ -235,7 +240,11 @@ $(function(){
     };
 
     $('#whepPlayer').hide();
-    $("#btnPlay").click(startPlay);
+    $("#btnPlay").click(() => {
+        $("#btnPlay").attr("disabled", true);
+        setTimeout(() => $("#btnPlay").attr("disabled", false), 1200);
+        startPlay();
+    });
 });
 </script>
 
