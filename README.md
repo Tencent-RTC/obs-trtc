@@ -15,9 +15,10 @@ WHIP is a standard protocol that lets you use HTML5 and different clients to pub
 and play live streams. Plus, you can use open-source tools to build your own live 
 streaming platform.
 
-You can also use TRTC (Tencent Real-Time Communication) cloud services with OBS WHIP 
-support for a streaming platform. This is a great option if you don't want to build 
-your own platform or need a more reliable and stable platform with dedicated support.
+You can also use [TRTC (Tencent Real-Time Communication)](https://trtc.tencentcloud.com/?utm_source=community&utm_medium=github&utm_campaign=OBS-WHIP-TRTC&_channel_track_key=5pdHDh2F) 
+cloud services with OBS WHIP support for a streaming platform. This is a great option 
+if you don't want to build your own platform or need a more reliable and stable 
+platform with dedicated support.
 
 Additionally, TRTC (Tencent Real-Time Communication) provides a free trial that includes 
 a specific amount of streaming time, making it super easy for you to try out.
@@ -30,7 +31,7 @@ If you need help or run into any problems, don't hesitate to contact us on
 Before you move forward, double-check that you've got these necessary items ready:
 
 - OBS with WHIP support, please download from [OBS](https://obsproject.com/)
-- TRTC(Tencent Real-Time Communication) account, please register at [here](https://trtc.tencentcloud.com/?utm_source=community&utm_medium=github&utm_campaign=OBS-WHIP-TRTC&_channel_track_key=5pdHDh2F)
+- TRTC(Tencent Real-Time Communication) account, please register at [here](https://www.tencentcloud.com/account/login?s_url=https%253A%252F%252Fconsole.tencentcloud.com%252Ftrtc&from_portal=click_trtc_home&ext1=Get_Started_for_Free&utm_source=community&utm_medium=github&utm_campaign=OBS-WHIP-TRTC&_channel_track_key=1Wj1CLcu)
 
 > Note: Currently, OBS WHIP has been merged into the master branch but has not been released yet. 
 > You can login GitHub and download it from [here](https://github.com/obsproject/obs-studio/actions/runs/5227109208?pr=7926).
