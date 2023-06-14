@@ -30,7 +30,7 @@ If you need help or run into any problems, don't hesitate to contact us on
 Before you move forward, double-check that you've got these necessary items ready:
 
 - OBS with WHIP support, please download from [OBS](https://obsproject.com/)
-- TRTC(Tencent Real-Time Communication) account, please register at [here](https://www.tencentcloud.com/account/login?s_url=https%3A%2F%2Fconsole.tencentcloud.com%2Ftrtc&from_portal=click_trtc_home&ext1=Get_Started_for_Free)
+- TRTC(Tencent Real-Time Communication) account, please register at [here](https://trtc.tencentcloud.com/?utm_source=community&utm_medium=github&utm_campaign=OBS-WHIP-TRTC&_channel_track_key=5pdHDh2F)
 
 > Note: Currently, OBS WHIP has been merged into the master branch but has not been released yet. 
 > You can login GitHub and download it from [here](https://github.com/obsproject/obs-studio/actions/runs/5227109208?pr=7926).
@@ -41,7 +41,7 @@ Next, you need to create a TRTC application and generate a Bearer Token for WHIP
 
 Please follow the steps below to create a TRTC application:
 
-1. Log in to the [TRTC console](https://console.cloud.tencent.com/trtc) and click **Application Management** on the left sidebar.
+1. Log in to the [TRTC console](https://console.cloud.tencent.com/trtc?utm_source=community&utm_medium=github&utm_campaign=OBS-WHIP-TRTC&_channel_track_key=kgdTyhux) and click **Application Management** on the left sidebar.
 1. Click **Create Application** and enter the application name.
 1. Click **Create** to create the application.
 
@@ -59,9 +59,9 @@ utilized in OBS.
 
 ## Step 2: Create a Bearer Token for WHIP
 
-You can directly visit https://tencent-rtc.github.io/obs-trtc/bearer.html to create a WHIP Bearer Token. 
-Ensure that use the appid with your own `SDKAppID` and secret with your own `SDKSecretKey`, 
-then click the `Generate Bearer Token` button.
+You can directly visit [https://tencent-rtc.github.io/obs-trtc/bearer.html](https://tencent-rtc.github.io/obs-trtc/bearer.html) 
+to create a WHIP Bearer Token. Ensure that use the appid with your own `SDKAppID` and 
+secret with your own `SDKSecretKey`, then click the `Generate Bearer Token` button.
 
 ![0031](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/a6df5559-570e-4348-8492-60ffd7aaa2de)
 
@@ -118,7 +118,7 @@ with OBS WHIP and TRTC integration.
 
 ## (Optional) Annex A: Deploy the WHIP Bearer Token Server
 
-We deploy this tool on the server `https://tencent-rtc.github.io/obs-trtc/bearer.html` 
+We deploy this tool on the server [https://tencent-rtc.github.io/obs-trtc/bearer.html](https://tencent-rtc.github.io/obs-trtc/bearer.html) 
 for your convenience.
 
 Alternatively, you can operate your own server to produce the token by utilizing
