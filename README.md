@@ -67,6 +67,10 @@ then click the `Generate Bearer Token` button.
 
 > Note: You can also access the url `https://tencent-rtc.github.io/obs-trtc/?appid=2000xxx&secret=yyyyyy` to setup the parameters.
 
+Next, use the generated WHIP Bearer Token to configure OBS.
+
+## Step 3: Configure OBS
+
 In the `OBS WHIP` section, you will find the generated WHIP Bearer Token for configuring OBS.
 
 ![004](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/29f1ac74-cb3a-4c6e-a3e4-e6c92ea2aab0)
@@ -74,10 +78,6 @@ In the `OBS WHIP` section, you will find the generated WHIP Bearer Token for con
 * Service: `WHIP`
 * Server: `https://signaling.rtc.tencentcloud.com/v2/pub/2000xxxx/xxxxxxx?SessionID=xxxxxxxxx`
 * Bearer Token: `xxxxxx-yyyyyy-zzzzzz`
-
-Next, use the generated WHIP Bearer Token to configure OBS.
-
-## Step 3: Configure OBS
 
 Please follow the steps below to configure OBS:
 
