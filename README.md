@@ -149,4 +149,6 @@ If you want to configure OBS in real-time mode, please follow the steps below:
 7. Select `zerolatency` for **Tune**.
 8. Click **OK** to save the settings.
 
+![009](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/76c36f45-f164-4a78-b3fc-29005cacf6e7)
+
 The other steps are the same as the previous section.
