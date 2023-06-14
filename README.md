@@ -83,8 +83,8 @@ Please follow the steps below to configure OBS:
 
 1. Open OBS and click **Settings**.
 2. Click **Stream** on the left sidebar.
-3. Select **WHIP** for **Service**.
-4. Enter the **Server** and **Bearer Token** generated in the previous step.
+3. Select `WHIP` for **Service**.
+4. Enter the `Server` and `Bearer Token` generated in the previous step.
 5. Click **OK** to save the settings.
 6. Click **Start Streaming** to start streaming.
 
@@ -136,3 +136,17 @@ TRTC_APPID=2000xxxx TRTC_SECRETKEY=yyyyyy go run .
 
 The other steps are the same as the previous section.
 
+## (Optional) Annexb B: Configure OBS in Real-Time Mode
+
+If you want to configure OBS in real-time mode, please follow the steps below:
+
+1. Open OBS and click **Settings**.
+2. Click **Output** on the left sidebar.
+3. Select `Advanced` for **Output Mode**.
+4. Set **Keyframe Interval** to `1 s`.
+5. Select `veryfast` for **CPU Usage Preset**.
+6. Select `baseline` for **Profile**.
+7. Select `zerolatency` for **Tune**.
+8. Click **OK** to save the settings.
+
+The other steps are the same as the previous section.
