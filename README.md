@@ -63,6 +63,10 @@ You can directly visit https://trtc.ossrs.io/obs-trtc/ to create a WHIP Bearer T
 Ensure that use the appid with your own `SDKAppID` and secret with your own `SDKSecretKey`, 
 then click the `Generate Bearer Token` button.
 
+![0031](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/a6df5559-570e-4348-8492-60ffd7aaa2de)
+
+> Note: You can also access the url https://trtc.ossrs.io/obs-trtc/?appid=2000xxx&secret=yyyyyy to setup the parameters.
+
 In the `OBS WHIP` section, you will find the generated WHIP Bearer Token for configuring OBS.
 
 ![004](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/29f1ac74-cb3a-4c6e-a3e4-e6c92ea2aab0)
