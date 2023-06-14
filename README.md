@@ -30,10 +30,10 @@ If you need help or run into any problems, don't hesitate to contact us on
 Before you move forward, double-check that you've got these necessary items ready:
 
 - OBS with WHIP support, please downlaod from [OBS](https://obsproject.com/)
-- TRTC(Tencent Real-Time Communication) account, please register at [here](https://trtc.tencentcloud.com/)
+- TRTC(Tencent Real-Time Communication) account, please register at [here](https://www.tencentcloud.com/account/login?s_url=https%3A%2F%2Fconsole.tencentcloud.com%2Ftrtc&from_portal=click_trtc_home&ext1=Get_Started_for_Free)
 
 > Note: Currently, OBS WHIP has been merged into the master branch but has not been released yet. 
-> You can download it from [here](https://github.com/obsproject/obs-studio/actions/runs/5227109208?pr=7926).
+> You can login GitHub and download it from [here](https://github.com/obsproject/obs-studio/actions/runs/5227109208?pr=7926).
 
 Next, you need to create a TRTC application and generate a Bearer Token for WHIP.
 
@@ -65,7 +65,7 @@ then click the `Generate Bearer Token` button.
 
 ![0031](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/a6df5559-570e-4348-8492-60ffd7aaa2de)
 
-> Note: You can also access the url https://trtc.ossrs.io/obs-trtc/?appid=2000xxx&secret=yyyyyy to setup the parameters.
+> Note: You can also access the url `https://trtc.ossrs.io/obs-trtc/?appid=2000xxx&secret=yyyyyy` to setup the parameters.
 
 In the `OBS WHIP` section, you will find the generated WHIP Bearer Token for configuring OBS.
 
@@ -78,7 +78,8 @@ The configuration settings for OBS WHIP are as follows:
 * Bearer Token: `xxxxxx-yyyyyy-zzzzzz`
 
 Alternatively, you can operate your own server to produce the token by utilizing 
-the following command line:
+the following command line, then navigate to the webpage `http://localhost:9000/` 
+to generate a WHIP Bearer Token.:
 
 ```bash
 git clone https://github.com/Tencent-RTC/obs-trtc.git
@@ -86,7 +87,7 @@ cd obs-trtc
 TRTC_APPID=2000xxxx TRTC_SECRETKEY=yyyyyy go run .
 ```
 
-Next, navigate to the webpage http://localhost:9000/ to generate a WHIP Bearer Token.
+Next, use the generated WHIP Bearer Token to configure OBS.
 
 ## Step 3: Configure OBS
 
@@ -101,7 +102,7 @@ Please follow the steps below to configure OBS:
 
 ![005](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/612ad0f9-9927-4b48-82da-8ac388dece80)
 
-At this point, the stream is being broadcasted to the TRTC service.
+At this point, the stream is streaming to the TRTC service.
 
 ## Step 4: Play the stream
 
