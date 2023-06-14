@@ -3,41 +3,51 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/tencentyun/tls-sig-api-v2-golang/tencentyun"
 	"html/template"
 	"math/rand"
 	"net/http"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/tencentyun/tls-sig-api-v2-golang/tencentyun"
 )
+
+type TmplResponse struct {
+	Ready bool
+	// It should be an integer, but we use string for HTML input.
+	SDKAppID string
+	// The secret key for TRTC, use mask for HTML input.
+	SDKSecretKey string
+	// The stream ID for WHIP, or room ID for TRTC.
+	StreamID string
+	// The WHIP endpoing.
+	WHIPServer string
+	// The session ID for WHIP, or user ID for TRTC.
+	WHIPSessionID string
+	// The Bearer Token for WHIP, or userSig for TRTC.
+	WHIPBearerToken string
+	// The WHEP endpoing.
+	WHEPServer string
+	// The session ID for WHEP, or user ID for TRTC.
+	WHEPSessionID string
+	// The Bearer Token for WHEP, or userSig for TRTC.
+	WHEPBearerToken string
+	// The TRTC user ID to pull stream.
+	TRTCUserID string
+	// The TRTC user signature to pull stream.
+	TRTCUserSig string
+}
 
 func doMain(ctx context.Context) error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if err := func() error {
-			q := r.URL.Query()
-			getQueryOrEnv := func(kQuery, kEnv string) string {
+			getQueryOrEnv := func(q url.Values, kQuery, kEnv string) string {
 				if v := q.Get(kQuery); v != "" {
 					return v
 				}
 				return os.Getenv(kEnv)
-			}
-
-			SDKSecretKey := getQueryOrEnv("secret", "TRTC_SECRETKEY")
-			if SDKSecretKey == "" {
-				return fmt.Errorf("env TRTC_SECRETKEY or query secret must be set")
-			}
-
-			sSDKAppID := getQueryOrEnv("appid", "TRTC_APPID")
-			if sSDKAppID == "" {
-				return fmt.Errorf("env TRTC_APPID or query appid must be set")
-			}
-
-			var SDKAppID int
-			if v, err := strconv.ParseInt(sSDKAppID, 10, 64); err != nil || v <= 0 {
-				return fmt.Errorf("TRTC_APPID=%v must be a positive integer", sSDKAppID)
-			} else {
-				SDKAppID = int(v)
 			}
 
 			tmpl, err := template.ParseFiles("tmpl/index.html")
@@ -45,10 +55,25 @@ func doMain(ctx context.Context) error {
 				return err
 			}
 
+			q := r.URL.Query()
 			streamID := q.Get("stream")
 			if streamID == "" {
 				streamID = fmt.Sprintf("%x", rand.Uint64())
 				streamID = streamID[len(streamID)-7:]
+			}
+
+			SDKSecretKey := getQueryOrEnv(q, "secret", "TRTC_SECRETKEY")
+			sSDKAppID := getQueryOrEnv(q, "appid", "TRTC_APPID")
+			ready := sSDKAppID != "" && SDKSecretKey != ""
+			if !ready {
+				return tmpl.Execute(w, &TmplResponse{})
+			}
+
+			var SDKAppID int
+			if v, err := strconv.ParseInt(sSDKAppID, 10, 64); err != nil || v <= 0 {
+				return fmt.Errorf("TRTC_APPID=%v must be a positive integer", sSDKAppID)
+			} else {
+				SDKAppID = int(v)
 			}
 
 			whipSessionID := fmt.Sprintf("%x", rand.Uint64())
@@ -76,29 +101,9 @@ func doMain(ctx context.Context) error {
 				return err
 			}
 
-			return tmpl.Execute(w, &struct {
-				SDKAppID     int
-				SDKSecretKey string
-				// The stream ID for WHIP, or room ID for TRTC.
-				StreamID string
-				// The WHIP endpoing.
-				WHIPServer string
-				// The session ID for WHIP, or user ID for TRTC.
-				WHIPSessionID string
-				// The Bearer Token for WHIP, or userSig for TRTC.
-				WHIPBearerToken string
-				// The WHEP endpoing.
-				WHEPServer string
-				// The session ID for WHEP, or user ID for TRTC.
-				WHEPSessionID string
-				// The Bearer Token for WHEP, or userSig for TRTC.
-				WHEPBearerToken string
-				// The TRTC user ID to pull stream.
-				TRTCUserID string
-				// The TRTC user signature to pull stream.
-				TRTCUserSig string
-			}{
-				SDKAppID:        SDKAppID,
+			return tmpl.Execute(w, &TmplResponse{
+				Ready:           true,
+				SDKAppID:        sSDKAppID,
 				SDKSecretKey:    strings.Repeat("*", len(SDKSecretKey)),
 				StreamID:        streamID,
 				WHIPServer:      whipServer,

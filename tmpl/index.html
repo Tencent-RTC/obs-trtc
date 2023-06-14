@@ -38,24 +38,44 @@
                     Settings
                 </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse">
+            <div id="collapseOne" class="accordion-collapse collapse {{if not .Ready}}show{{end}}">
                 <div class="accordion-body">
                     <div class="mb-3">
                         <label for="txtSDKAppID" class="form-label">SDKAppID</label>
-                        <span class="form-control" id="txtSDKAppID">{{.SDKAppID}}</span>
+                        {{if .Ready}}
+                            <span type="text" class="form-control" id="txtSDKAppID">{{.SDKAppID}}</span>
+                        {{else}}
+                            <input type="text" class="form-control" id="txtSDKAppID" value="{{.SDKAppID}}">
+                        {{end}}
                     </div>
                     <div class="mb-3">
                         <label for="txtSDKSecretKey" class="form-label">SDKSecretKey</label>
-                        <span class="form-control" id="txtSDKSecretKey">{{.SDKSecretKey}}</span>
+                        {{if .Ready}}
+                            <span type="text" class="form-control" id="txtSDKSecretKey">{{.SDKSecretKey}}</span>
+                        {{else}}
+                            <input type="text" class="form-control" id="txtSDKSecretKey" value="{{.SDKSecretKey}}">
+                        {{end}}
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" {{if not .Ready}}hidden{{end}}>
                         <label for="txtStreamID" class="form-label">StreamID</label>
                         <span class="form-control" id="txtStreamID">{{.StreamID}}</span>
+                    </div>
+                    <div class="mb-3" {{if .Ready}}hidden{{end}}>
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <button class="btn btn-primary" id="btnGenerate">Generate Bearer Token</button>
+                            </div>
+                            <div class="col-auto">
+                                * <a href="https://github.com/Tencent-RTC/obs-trtc#step-1-create-a-trtc-application" target="_blank" class="link-opacity-50-hover">
+                                Get a SDKAppID and SDKSecretKey
+                            </a>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item" {{if not .Ready}}hidden{{end}}>
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
                     OBS WHIP
@@ -94,7 +114,7 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
                 </div>
             </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item" {{if not .Ready}}hidden{{end}}>
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
                     WHEP Player
@@ -119,7 +139,7 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
                 </div>
             </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item" {{if not .Ready}}hidden{{end}}>
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
                     TRTC Room
@@ -161,6 +181,13 @@ ffmpeg -re -f lavfi -i testsrc=size=1280x720:rate=30 -f lavfi -i sine=frequency=
     console.log(`?appid=xxx Overwrite the TRTC_APPID environment variable.`);
     console.log(`?secret=xxx Overwrite the TRTC_SECRETKEY environment variable.`);
     console.log(`?stream=xxx Setup the stream ID for WHIP, or room ID for TRTC.`);
+
+    $("#btnGenerate").click(() => {
+        const u = new URL(window.location.href);
+        $("#txtSDKAppID").val() && u.searchParams.set("appid", $("#txtSDKAppID").val());
+        $("#txtSDKSecretKey").val() && u.searchParams.set("secret", $("#txtSDKSecretKey").val());
+        window.location.href = u.toString();
+    });
 </script>
 
 <script src='https://web.sdk.qcloud.com/trtc/webrtc/v5/npm-package/trtc.js'></script>
