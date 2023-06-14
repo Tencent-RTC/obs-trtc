@@ -59,13 +59,13 @@ utilized in OBS.
 
 ## Step 2: Create a Bearer Token for WHIP
 
-You can directly visit https://trtc.ossrs.io/obs-trtc/ to create a WHIP Bearer Token. 
+You can directly visit https://tencent-rtc.github.io/obs-trtc/ to create a WHIP Bearer Token. 
 Ensure that use the appid with your own `SDKAppID` and secret with your own `SDKSecretKey`, 
 then click the `Generate Bearer Token` button.
 
 ![0031](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/a6df5559-570e-4348-8492-60ffd7aaa2de)
 
-> Note: You can also access the url `https://trtc.ossrs.io/obs-trtc/?appid=2000xxx&secret=yyyyyy` to setup the parameters.
+> Note: You can also access the url `https://tencent-rtc.github.io/obs-trtc/?appid=2000xxx&secret=yyyyyy` to setup the parameters.
 
 In the `OBS WHIP` section, you will find the generated WHIP Bearer Token for configuring OBS.
 
@@ -94,7 +94,7 @@ At this point, the stream is streaming to the TRTC service.
 
 ## Step 4: Play the stream
 
-Open the previous webpage at `trtc.ossrs.io` which generated the WHIP Bearer Token, go to the `WHEP Player` section, 
+Open the previous webpage at `tencent-rtc.github.io` which generated the WHIP Bearer Token, go to the `WHEP Player` section, 
 and click **Play Stream** to play the stream via WHEP.
 
 ![006](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/2e727bce-6d2b-47c8-b214-6fc320b1291a)
@@ -122,7 +122,7 @@ with OBS WHIP and TRTC integration.
 
 ## (Optional) Annexb A: Deploy the WHIP Bearer Token Server
 
-We deploy this tool on the server `https://trtc.ossrs.io/obs-trtc/` for your convenience.
+We deploy this tool on the server `https://tencent-rtc.github.io/obs-trtc/` for your convenience.
 
 Alternatively, you can operate your own server to produce the token by utilizing
 the following command line, then navigate to the webpage `http://localhost:9000/`
@@ -130,6 +130,7 @@ to generate a WHIP Bearer Token.
 
 ```bash
 git clone https://github.com/Tencent-RTC/obs-trtc.git
+cd obs-trtc
 open index.html
 ```
 

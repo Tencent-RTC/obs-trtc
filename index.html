@@ -284,7 +284,7 @@
         $('#trtcPlayer').hide();
         $("#btnJoin").click(() => {
             $("#btnJoin").attr("disabled", true);
-            setTimeout(() => $("#btnJoin").attr("disabled", false), 1200);
+            setTimeout(() => $("#btnJoin").attr("disabled", false), 3000);
             joinRoom();
         });
     });
@@ -312,7 +312,7 @@ $(function(){
     $('#whepPlayer').hide();
     $("#btnPlay").click(() => {
         $("#btnPlay").attr("disabled", true);
-        setTimeout(() => $("#btnPlay").attr("disabled", false), 1200);
+        setTimeout(() => $("#btnPlay").attr("disabled", false), 3000);
         startPlay();
     });
 });
