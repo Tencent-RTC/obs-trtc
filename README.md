@@ -42,8 +42,8 @@ Next, you need to create a TRTC application and generate a Bearer Token for WHIP
 Please follow the steps below to create a TRTC application:
 
 1. Log in to the [TRTC console](https://console.cloud.tencent.com/trtc) and click **Application Management** on the left sidebar.
-2. Click **Create Application** and enter the application name.
-3. Click **Create** to create the application.
+1. Click **Create Application** and enter the application name.
+1. Click **Create** to create the application.
 
 ![001](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/dce31494-ac4f-4844-b437-de3d244af678)
 
@@ -71,22 +71,18 @@ Next, use the generated WHIP Bearer Token to configure OBS.
 
 ## Step 3: Configure OBS
 
-In the `OBS WHIP` section, you will find the generated WHIP Bearer Token for configuring OBS.
+In the `OBS WHIP` section, you will find the generated WHIP `Server` and `Bearer Token` for configuring OBS.
 
 ![004](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/29f1ac74-cb3a-4c6e-a3e4-e6c92ea2aab0)
-
-* Service: `WHIP`
-* Server: `https://signaling.rtc.tencentcloud.com/v2/pub/2000xxxx/xxxxxxx?SessionID=xxxxxxxxx`
-* Bearer Token: `xxxxxx-yyyyyy-zzzzzz`
 
 Please follow the steps below to configure OBS:
 
 1. Open OBS and click **Settings**.
-2. Click **Stream** on the left sidebar.
-3. Select `WHIP` for **Service**.
-4. Enter the `Server` and `Bearer Token` generated in the previous step.
-5. Click **OK** to save the settings.
-6. Click **Start Streaming** to start streaming.
+1. Click **Stream** on the left sidebar.
+1. Select `WHIP` for **Service**.
+1. Make sure to input the `Server` and `Bearer Token` accurately.
+1. Click **OK** to save the settings.
+1. Click **Start Streaming** to start streaming.
 
 ![005](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/612ad0f9-9927-4b48-82da-8ac388dece80)
 
@@ -94,7 +90,7 @@ At this point, the stream is streaming to the TRTC service.
 
 ## Step 4: Play the stream
 
-Open the previous webpage at `tencent-rtc.github.io` which generated the WHIP Bearer Token, go to the `WHEP Player` section, 
+Open the previous webpage, go to the `WHEP Player` section, 
 and click **Play Stream** to play the stream via WHEP.
 
 ![006](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/2e727bce-6d2b-47c8-b214-6fc320b1291a)
@@ -120,13 +116,12 @@ to us via [Discord](https://discord.gg/vDHty6ddrZ).
 In the future, we will further investigate specific use cases and technologies associated
 with OBS WHIP and TRTC integration.
 
-## (Optional) Annexb A: Deploy the WHIP Bearer Token Server
+## (Optional) Annex A: Deploy the WHIP Bearer Token Server
 
 We deploy this tool on the server `https://tencent-rtc.github.io/obs-trtc/` for your convenience.
 
 Alternatively, you can operate your own server to produce the token by utilizing
-the following command line, then navigate to the webpage `http://localhost:9000/`
-to generate a WHIP Bearer Token.
+the following command line to generate a WHIP Bearer Token.
 
 ```bash
 git clone https://github.com/Tencent-RTC/obs-trtc.git
@@ -136,19 +131,28 @@ open index.html
 
 The other steps are the same as the previous section.
 
-## (Optional) Annexb B: Configure OBS in Real-Time Mode
+## (Optional) Annex B: Configure OBS in Real-Time Mode
 
-If you want to configure OBS in real-time mode, please follow the steps below:
+If you want to configur1e OBS in real-time mode, please follow the steps below:
 
 1. Open OBS and click **Settings**.
-2. Click **Output** on the left sidebar.
-3. Select `Advanced` for **Output Mode**.
-4. Set **Keyframe Interval** to `1 s`.
-5. Select `veryfast` for **CPU Usage Preset**.
-6. Select `baseline` for **Profile**.
-7. Select `zerolatency` for **Tune**.
-8. Click **OK** to save the settings.
+1. Click **Output** on the left sidebar.
+1. Select `Advanced` for **Output Mode**.
+1. Set **Keyframe Interval** to `1 s`.
+1. Select `veryfast` for **CPU Usage Preset**.
+1. Select `baseline` for **Profile**.
+1. Select `zerolatency` for **Tune**.
+1. Click **OK** to save the settings.
 
 ![009](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/76c36f45-f164-4a78-b3fc-29005cacf6e7)
 
 The other steps are the same as the previous section.
+
+## (Optional) Annex C: Create a Bearer Token for Real-World Use
+
+If you need to create a Bearer Token in a real-world setting, check out the 
+[UserSig](https://www.tencentcloud.com/document/product/647/35166) link for 
+more information.
+
+If you require assistance or encounter any difficulties, please feel free to reach out
+to us via [Discord](https://discord.gg/vDHty6ddrZ).
