@@ -102,14 +102,15 @@ the stream.
 
 ![007](https://github.com/Tencent-RTC/obs-trtc/assets/2777660/0a18bd36-e1f3-4070-bc89-95218785cb95)
 
-Since both WHIP and WHEP are standard protocols, you can utilize any client that supports 
+Since both WHIP and WHEP are standard protocols, you can utilize any client that supmv ports 
 them to play the stream.
 
 ## Conclusion
 
-We looked into using flexible TRTC (Tencent Real-Time Communication) cloud services to make a stronger 
-streaming platform and the steps needed to create a TRTC app with OBS WHIP help. These tools make it 
-easier to organize and provide smooth live streaming experiences for different situations.
+We looked into using TRTC (Tencent Real-Time Communication) cloud services to make a stronger 
+streaming platform and the steps needed to create a TRTC app with OBS WHIP. These tools make it 
+easier to provide real-time live streaming experiences for different situations, with the 
+power of OBS.
 
 If you require assistance or encounter any difficulties, please feel free to reach out
 to us via [Discord](https://discord.gg/vDHty6ddrZ).

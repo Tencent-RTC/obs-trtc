@@ -226,20 +226,33 @@
         console.log(`?secret=xxx Overwrite the TRTC_SECRETKEY environment variable.`);
         console.log(`?stream=xxx Setup the stream ID for WHIP, or room ID for TRTC.`);
 
-        const u = new URL(window.location.href);
-        const SDKAppID = u.searchParams.get("appid");
-        const SDKSecretKey = u.searchParams.get("secret");
-        const streamID = u.searchParams.get("stream") || Math.random().toString(16).slice(-7);
+      const u = new URL(window.location.href);
+        // Remove the query string and save to localStorage.
+        u.searchParams.get("appid") && localStorage.setItem("whip_appid", u.searchParams.get("appid"));
+        u.searchParams.get("secret") && localStorage.setItem("whip_secret", u.searchParams.get("secret"));
+        u.searchParams.get("stream") && localStorage.setItem("whip_stream", u.searchParams.get("stream"));
+        if (u.searchParams.get("appid") || u.searchParams.get("secret") || u.searchParams.get("stream")) {
+            u.searchParams.delete("appid");
+            u.searchParams.delete("secret");
+            u.searchParams.delete("stream");
+            window.location.href = u.toString();
+            return;
+        }
+
+        // Only load values from localStorage.
+        const SDKAppID = localStorage.getItem("whip_appid");
+        const SDKSecretKey = localStorage.getItem("whip_secret");
+        const streamID = localStorage.getItem("whip_stream") || Math.random().toString(16).slice(-7);
 
         SDKAppID && $("#txtSDKAppID").val(SDKAppID);
         SDKSecretKey && $("#txtSDKSecretKey").val(SDKSecretKey);
         $("#txtStreamID").val(streamID);
 
         $("#btnGenerate").click(() => {
-            $("#txtSDKAppID").val() && u.searchParams.set("appid", $("#txtSDKAppID").val());
-            $("#txtSDKSecretKey").val() && u.searchParams.set("secret", $("#txtSDKSecretKey").val());
-            $("#txtStreamID").val() && u.searchParams.set("stream", $("#txtStreamID").val());
-            window.location.href = u.toString();
+            $("#txtSDKAppID").val() && localStorage.setItem("whip_appid", $("#txtSDKAppID").val());
+            $("#txtSDKSecretKey").val() && localStorage.setItem("whip_secret", $("#txtSDKSecretKey").val());
+            $("#txtStreamID").val() && localStorage.setItem("whip_stream", $("#txtStreamID").val());
+            location.reload();
         });
 
         if (!SDKAppID || !SDKSecretKey) {
@@ -247,11 +260,9 @@
             $('#accordionTwo').hide();
             $('#accordionThree').hide();
             $('#collapseOne').addClass('show');
-            $('#generateBearerToken').show();
             return;
         }
 
-        $('#generateBearerToken').hide();
         const expireSeconds = 3600;
         const whipSessionID = Math.random().toString(16).slice(-9);
         const whipUserSig = new LibGenerateTestUserSig(parseInt(SDKAppID), SDKSecretKey, expireSeconds).genTestUserSig(whipSessionID);
