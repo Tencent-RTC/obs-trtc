@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TRTC-OBS-WHIP</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
-    <script charset="UTF-8" src="./sensorsdata.min.js"></script>
+    <!-- https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- https://github.com/sensorsdata/sa-sdk-javascript/releases/tag/v1.25.7 -->
+    <script charset="UTF-8" src="./js/sensorsdata.min.js"></script>
     <script charset="UTF-8">
       var sensors = window['sensorsDataAnalytic201505'];
       sensors.init({
@@ -219,7 +223,8 @@
     </div>
 </div>
 
-<script src='./lib-generate-test-usersig.min.js'></script>
+<!-- https://github.com/LiteAVSDK/TRTC_Web/blob/main/v5/quick-demo-js/js/libs/lib-generate-test-usersig.min.js -->
+<script src="./js/lib-generate-test-usersig.min.js"></script>
 <script type="text/javascript">
     $(function(){
         console.log(`?appid=xxx Overwrite the TRTC_APPID environment variable.`);
@@ -285,7 +290,8 @@
     });
 </script>
 
-<script src='https://web.sdk.qcloud.com/trtc/webrtc/v5/npm-package/trtc.js'></script>
+<!-- https://web.sdk.qcloud.com/trtc/webrtc/v5/npm-package/trtc.js -->
+<script src="./js/trtc.js"></script>
 <script type="text/javascript">
     $(function(){
         const trtc = TRTC.create();
@@ -342,7 +348,8 @@ $(function(){
 });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/webrtc-adapter@8.2.2/out/adapter.min.js"></script>
+<!-- https://cdn.jsdelivr.net/npm/webrtc-adapter@8.2.2/out/adapter.min.js -->
+<script src="./js/adapter.min.js"></script>
 <script type="text/javascript">
   // Depends on adapter-7.4.0.min.js from https://github.com/webrtc/adapter
   // Async-awat-prmise based SRS RTC Publisher by WHIP.
