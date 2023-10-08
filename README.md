@@ -34,7 +34,7 @@ Before you move forward, double-check that you've got these necessary items read
 - TRTC(Tencent Real-Time Communication) account, please register at [here](https://www.tencentcloud.com/account/login?s_url=https%253A%252F%252Fconsole.tencentcloud.com%252Ftrtc&utm_source=community&utm_medium=github&utm_campaign=OBS-WHIP-TRTC&_channel_track_key=6vGiu0P3)
 
 > Note: Currently, OBS WHIP has been merged into the master branch but has not been released yet. 
-> You can login GitHub and download it from [here](https://github.com/obsproject/obs-studio/releases/tag/30.0.0-beta2).
+> You can login GitHub and download it from [here](https://github.com/obsproject/obs-studio/releases/tag/30.0.0-beta3).
 
 Next, you need to create a TRTC application and generate a Bearer Token for WHIP.
 
