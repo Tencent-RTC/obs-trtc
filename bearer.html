@@ -227,9 +227,10 @@
 <script src="./js/lib-generate-test-usersig.min.js"></script>
 <script type="text/javascript">
     $(function(){
-        console.log(`?appid=xxx Overwrite the TRTC_APPID environment variable.`);
-        console.log(`?secret=xxx Overwrite the TRTC_SECRETKEY environment variable.`);
-        console.log(`?stream=xxx Setup the stream ID for WHIP, or room ID for TRTC.`);
+      console.log(`?appid=xxx Overwrite the TRTC_APPID environment variable.`);
+      console.log(`?secret=xxx Overwrite the TRTC_SECRETKEY environment variable.`);
+      console.log(`?stream=xxx Setup the stream ID for WHIP, or room ID for TRTC.`);
+      console.log(`?session=xxx Setup the stream ID for WHIP, or user ID for TRTC.`);
 
       const u = new URL(window.location.href);
         // Remove the query string and save to localStorage.
@@ -269,7 +270,7 @@
         }
 
         const expireSeconds = 3600;
-        const whipSessionID = Math.random().toString(16).slice(-9);
+        const whipSessionID = u.searchParams.get("session") || Math.random().toString(16).slice(-9);
         const whipUserSig = new LibGenerateTestUserSig(parseInt(SDKAppID), SDKSecretKey, expireSeconds).genTestUserSig(whipSessionID);
         const whipServer = `https://signaling.rtc.tencentcloud.com/v2/pub/${SDKAppID}/${streamID}?SessionID=${whipSessionID}`;
         $('#txtWHIPServer').val(whipServer);
