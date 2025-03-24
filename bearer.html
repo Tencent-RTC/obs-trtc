@@ -272,13 +272,13 @@
         const expireSeconds = 3600;
         const whipSessionID = u.searchParams.get("session") || Math.random().toString(16).slice(-9);
         const whipUserSig = new LibGenerateTestUserSig(parseInt(SDKAppID), SDKSecretKey, expireSeconds).genTestUserSig(whipSessionID);
-        const whipServer = `https://signaling.rtc.tencentcloud.com/v2/pub/${SDKAppID}/${streamID}?SessionID=${whipSessionID}`;
+        const whipServer = `https://signaling.rtc-web.com/v2/pub/${SDKAppID}/${streamID}?SessionID=${whipSessionID}`;
         $('#txtWHIPServer').val(whipServer);
         $('#txtWHIPBearerToken').val(whipUserSig);
 
         const whepSessionID = Math.random().toString(16).slice(-9);
         const whepUserSig = new LibGenerateTestUserSig(parseInt(SDKAppID), SDKSecretKey, expireSeconds).genTestUserSig(whepSessionID);
-        const whepServer = `https://signaling.rtc.tencentcloud.com/v2/sub/${SDKAppID}/${streamID}?SessionID=${whepSessionID}`;
+        const whepServer = `https://signaling.rtc-web.com/v2/sub/${SDKAppID}/${streamID}?SessionID=${whepSessionID}`;
         $('#txtWHEPServer').val(whepServer);
         $('#txtWHEPBearerToken').val(whepUserSig);
 
